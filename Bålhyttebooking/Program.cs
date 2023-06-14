@@ -16,28 +16,10 @@ namespace Bålhyttebooking
 
             Reservationer res = new Reservationer(DateTime.Now.Year);
 
-            List<Boernegruppe> boernegrupper = new List<Boernegruppe>();
-            List<Reservation> reservationer = new List<Reservation>();
+            res.RegistrerReservationer(r1);
+            res.RegistrerReservationer(r2);
+            res.PrintReservationer();
 
-            boernegrupper.Add(bg1);
-            boernegrupper.Add(bg2);
-
-            reservationer.Add(r1);
-            reservationer.Add(r2);
-
-            foreach (Boernegruppe bg in boernegrupper)
-            {
-                bg.PrintBoernegruppe();
-                Console.WriteLine();
-            }
-
-            foreach (Reservation r in reservationer) 
-            {
-                r.PrintReservation();
-                Console.WriteLine();
-            }
-
-            Console.WriteLine(res.Id);
 
         }
 

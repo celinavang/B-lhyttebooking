@@ -13,6 +13,8 @@ namespace Bålhyttebooking
         private string _aldersgruppe;
         private int _antalDeltagere;
 
+        static Dictionary<int, Boernegruppe> boernegrupper;
+
         public int Id { get { return _id; } set { _id = value; } }
         public string Navn { get { return _navn; } set { _navn = value; } }
         public string Aldersgruppe { get { return _aldersgruppe; } set { _aldersgruppe = value; } }
@@ -32,8 +34,21 @@ namespace Bålhyttebooking
         }
 
         public void CreateBoernegruppe() { }
+
+        public Boernegruppe? FindBoernegruppe(int id) 
+        {
+            //find pr id
+            return null;
+        }
+
         public void DeleteBoernegruppe() { }
         public void EditBoernegruppe() { }
+
+        public bool EksistererBoernegruppe(int id) 
+        {
+            //findes den allerede?
+            return false;
+        }
 
     }
 }
