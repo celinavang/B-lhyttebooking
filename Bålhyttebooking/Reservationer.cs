@@ -84,7 +84,43 @@ namespace Bålhyttebooking
         public bool ReservationOK(Reservation reservation) 
         {
             if (reservation.Boernegruppe != null && AntalReservationer(reservation.Boernegruppe) < 2 && ReservationLedig(reservation.Tidspunkt) && ReservationsTidspunktOK(reservation.Tidspunkt)) { return true; } 
-            else throw new ArgumentException("Følgende reservation er ikke gyldig, og kunne ikke oprettes:");
+            else throw new Exception("Følgende reservation er ikke gyldig, og kunne ikke oprettes:");
+        }
+        
+        public Reservation FindReservation(int id)
+        {
+            foreach (var r in reservationer)
+            {
+                if (r.Value.Id==id) { return r.Value; }
+            } return null;
+            
+        }
+
+        public void RedigerReservation(Reservation reservation)
+        {
+            
+                if (FindReservation(reservation.Id) != null)
+                {
+                    if (FindReservation(reservation.Id).Tidspunkt != reservation.Tidspunkt)
+                    {
+                    if (ReservationLedig(reservation.Tidspunkt) && reservation.Boernegruppe != null && ReservationsTidspunktOK(reservation.Tidspunkt))
+                    {
+                        reservationer.Remove(reservation.Id);
+                        reservationer.Add(reservation.Id, reservation);
+                        Console.WriteLine("Reservation opdateret");
+                        reservation.PrintReservation();
+                        return;
+                    }
+                    else { Console.WriteLine("En anden booking findes på det valgte tidspunkt"); return; } 
+                    } else if (reservation.Boernegruppe != null)
+                    {
+                        reservationer.Remove(reservation.Id);
+                        reservationer.Add(reservation.Id, reservation);
+                    Console.WriteLine("Reservation opdateret");
+                    reservation.PrintReservation();
+                    return;
+                    }
+                } else { Console.WriteLine("Reservationen findes ikke"); return; }
         }
     }
     

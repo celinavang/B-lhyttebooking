@@ -9,12 +9,17 @@ namespace Bålhyttebooking
         {
             Console.WriteLine("hello world");
 
-            Boernegruppe bg1 = new Boernegruppe(1, "børnegruppe 1", "tumlinge", 23);
-            Boernegruppe bg2 = new Boernegruppe(2, "børnegruppe 2", "tumlinge", 23);
+      
+
+            Boernegruppe bg1 = new Boernegruppe(1, "børnegruppe 1", Boernegruppe.AldersGrupper.Tumling, 23);
+            bg1.CreeateBoernegruppe(bg1);
+            Boernegruppe bg2 = new Boernegruppe(2, "børnegruppe 2", Boernegruppe.AldersGrupper.Tumling, 23);
+            bg2.CreeateBoernegruppe(bg2);
 
             Reservation r1 = new Reservation(1, new DateTime(2023,06,15,12,00,00), bg1);
             Reservation r2 = new Reservation(2, new DateTime(2023, 06, 15, 14, 00, 00), bg2 );
             Reservation r3 = new Reservation(3, new DateTime(2023, 06, 15, 14, 00, 00), bg2);
+            Reservation r4 = new Reservation(2, new DateTime(2023, 06, 15, 14, 00, 00), bg2);
 
             Reservationer res = new Reservationer(DateTime.Now.Year);
             
@@ -23,7 +28,7 @@ namespace Bålhyttebooking
             res.RegistrerReservationer(r2);
             res.PrintReservationer();
             res.RegistrerReservationer(r3);
-
+            res.RedigerReservation(new Reservation(2, new DateTime(2023, 06, 15, 12, 00, 00), bg2));
 
         }
 
