@@ -28,7 +28,11 @@ namespace Bålhyttebooking
             res.RegistrerReservationer(r2);
             res.PrintReservationer();
             res.RegistrerReservationer(r3);
+            Console.WriteLine();
             res.RedigerReservation(new Reservation(2, new DateTime(2023, 06, 15, 12, 00, 00), bg2));
+            Console.WriteLine();
+            res.RedigerReservation(new Reservation(2, new DateTime(2023, 06, 15, 16, 00, 00), bg2));
+
 
         }
 
