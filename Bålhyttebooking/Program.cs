@@ -14,6 +14,8 @@ namespace Bålhyttebooking
             Reservation r1 = new Reservation(1, DateTime.Now, bg1);
             Reservation r2 = new Reservation(2, DateTime.Now, bg2 );
 
+            Reservationer res = new Reservationer(DateTime.Now.Year);
+
             List<Boernegruppe> boernegrupper = new List<Boernegruppe>();
             List<Reservation> reservationer = new List<Reservation>();
 
@@ -34,6 +36,8 @@ namespace Bålhyttebooking
                 r.PrintReservation();
                 Console.WriteLine();
             }
+
+            Console.WriteLine(res.Id);
 
         }
 
