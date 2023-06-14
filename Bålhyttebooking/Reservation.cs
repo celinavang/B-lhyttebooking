@@ -6,10 +6,27 @@ using System.Threading.Tasks;
 
 namespace Bålhyttebooking
 {
-    internal class Reservation
+    public class Reservation
     {
         private int _id;
         private DateTime _tidspunkt;
         private Boernegruppe _boernegruppe;
+
+        public Reservation(int id, DateTime tidspunkt, Boernegruppe boernegruppe)
+        {
+            _id=id;
+            _tidspunkt=tidspunkt;
+            _boernegruppe=boernegruppe;
+        }   
+
+        public int Id { get { return _id; } set { _id = value; } }
+        public DateTime Tidspunkt { get {  return _tidspunkt; } set { _tidspunkt = value; } }
+        public Boernegruppe Boernegruppe { get {  return _boernegruppe; } set { _boernegruppe = value; } }
+
+        public void PrintReservation() 
+        {
+            Console.WriteLine("Reservation: " + _id.ToString() + "\nTidspunkt: " + _tidspunkt.ToString());
+            _boernegruppe.PrintBoernegruppe();
+        }
     }
 }

@@ -8,5 +8,7 @@ namespace Bålhyttebooking
 {
     internal class Reservationer
     {
+        private int _id;
+
     }
 }
